@@ -3,20 +3,26 @@
         <div class="main">
             <h1 class="heading" v-once>{{title}}</h1>
             <h3 class="heading">{{title}}</h3>
-            <span>
-                <input type="text" v-model="todoitem" v-on:keypress="change()" v-on:keyup.enter="addTask()" v-on:click="change()">
-                <button class="addButton" v-on:click="addTask()"> Add </button>
+            <div>
+                <input 
+                    type="text" 
+                    v-model="todoitem" 
+                    @keypress="change()" 
+                    @keyup.enter="addTask()" 
+                    @click="change()"
+                >
+                <button class="addButton" @click="addTask()"> Add </button>
                 <button class="addButton" @click="changeHeading()">Change SubHeading </button>
-            </span>
-            <div class="error" v-if="isEmpty"> <h6> Required </h6> </div>
-            <div class="green" v-else> <h6> Good going man !! </h6> </div>
+            </div>
+            <span class="error" v-if="isEmpty"> <h6> Required </h6> </span>
+            <span class="green" v-else> <h6> Good going man !! </h6> </span>
             <ul>
-                <li v-for="(todo,index) in todolist" :key="index">
-                    {{ todo }} 
-                    <button v-on:click="deleteTask(todo)" class="done"> Done</button>
+                <li v-for="(todo,index) in todolist" :key="index" >
+                    {{ todo | UCase }} 
+                    <button @click="deleteTask(todo)" class="done"> Done</button>
                 </li>
             </ul>
-            <div v-show="history!=''" v-cloak>
+            <div v-show="history!=''">
                 <div v-html="html"></div>
                 <textarea class="textarea" v-text="history" readonly>
                 </textarea>
@@ -24,24 +30,25 @@
                     <button @click="clearHistory()"> Clear History </button>
                 </section>
             </div>
-            <h6 class="heading" v-pre> @copyright do not try and imitate</h6>        
+            <h6 class="heading"> @copyright do not try and imitate</h6>        
         </div>
     </div>    
 </template>
  
-<script src="./Todo.js">
-</script>
-
+<script src="./Todo.js"></script>
 
 <style scoped>
-.main{
+.main {
     margin: auto; 
     border: 3px solid coral;
     padding: 10px;
     width: 60%;
     border-radius: 30px;
 }
-
+.main h3 {
+    padding: 10px 0px;
+    width: 100%;
+}
 .error h6 {
     color: red;
     margin-top: 2px;
@@ -52,42 +59,34 @@
     margin-top: 2px;
     margin-bottom: 2px;
 }
-
 .addButton {
     background-color: coral;
     margin-left:12px;
     border-radius: 3px;
 }
-
-.done{
+.done {
     background-color: coral;
     border-radius: 3px;
 }
-
-.heading{
+.heading {
     background-color: coral;
     width: 97%;
     padding: 10px;
     border-radius: 3px;
-    text-align: center;
-    
+    text-align: center;   
 }
-
-.main ul{
+.main ul {
     list-style-type: none; 
 }
-
-.navigation button{
+.navigation button {
     margin-top: 15px;
     padding: 5px;
     width: 8%;   
 }
-
 .textarea {
     width: 50%;
     height: 60px;
 }
-
 [v-cloak] >* {display: none;}
 [v-cloak]::before {content: "loading...";}
 </style>

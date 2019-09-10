@@ -35,7 +35,9 @@
 .child {
     align-self: center;
     height: 500px;
+    justify-content: center;
     flex-grow: 3;
+    overflow-y: auto;
 }
 .foot {
     width: 100%;

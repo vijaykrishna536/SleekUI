@@ -3,8 +3,8 @@
         <ul>
             <router-link to="/"><li><h1> Menu </h1></li></router-link>
             <router-link to='/todo'><li class="items"> Todo </li></router-link>
-            <li class="items"> Page2 </li>
-            <li class="items"> page3 </li>
+            <router-link to='/loan'><li class="items"> Loan </li></router-link>
+            <router-link to='/weather'><li class="items"> Weather </li></router-link>
         </ul>
     </div>
 </template>
@@ -26,6 +26,7 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 .main li {
     padding: 10px;

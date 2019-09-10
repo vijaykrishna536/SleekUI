@@ -1,12 +1,7 @@
 import Landing from '@/pages/LandingPage'
 
 export default {
-  
-  data () {
-    return {
-
-    }
-  },
+  name: 'App',
   components : {
     Landing
   }

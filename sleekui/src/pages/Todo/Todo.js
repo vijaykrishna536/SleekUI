@@ -8,7 +8,8 @@ export default {
             history: '',
             count:1, 
             html:"<h3 v-pre> History </h3>",
-            title:'To Do List'
+            title:'To Do List',
+            all:''
         }
     },
     methods:{
@@ -17,15 +18,12 @@ export default {
                 let word=this.history
                 this.todolist.push(this.todoitem);
                 this.history= word.concat(this.count+". "+this.todoitem+", ");
-                console.log("this is running",this.history)
                 this.count++;
                 this.clearBox();
                 this.change();
             } else {
                 this.isEmpty=true;
             }
-            
-    
         },
         deleteTask : function (todo) {
             this.todolist.splice(this.todolist.indexOf(todo),1);
@@ -34,12 +32,13 @@ export default {
             this.todoitem='';
         },
         change () {
-                console.log("called")
-                if(this.isEmpty==true)
-                    this.isEmpty=false;           
+            if(this.isEmpty==true) {
+                this.isEmpty=false;  
+            }         
         },
         clearHistory () {
             this.history=''
+            this.count=1
         },
         changeHeading () {
             if(this.title=="To Do List") {
